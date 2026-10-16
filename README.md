@@ -17,13 +17,18 @@ the final document.
 
 ## Documentation
 
+- [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md): clone and run the project on a new machine, step by step
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): architecture, schema, routes, AI design
 - [docs/SETUP.md](docs/SETUP.md): environment variables, Supabase/OpenAI/Resend setup, local development, deployment, operations
 - [docs/CONVENTIONS.md](docs/CONVENTIONS.md): code patterns for contributors
 
 ## Quick start
 
+New machine? Follow [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
+
 ```bash
+git clone https://github.com/bhanu-tpm/portfolio-work-1.git
+cd portfolio-work-1
 npm install
 cp .env.example .env.local   # fill in Supabase keys at minimum
 npm run dev
