@@ -1,0 +1,312 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), var(--font-deva-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-source-serif), var(--font-deva-serif), ui-serif, Georgia, serif;
+  --font-heading: var(--font-source-serif), var(--font-deva-serif), ui-serif, Georgia, serif;
+  --color-teal: var(--teal);
+  --color-teal-foreground: var(--teal-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Palette: deep navy, muted teal, off-white, neutral gray. */
+:root {
+  --background: oklch(0.985 0.004 85);
+  --foreground: oklch(0.24 0.035 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.035 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.035 255);
+  --primary: oklch(0.29 0.06 255);
+  --primary-foreground: oklch(0.985 0.004 85);
+  --secondary: oklch(0.95 0.012 200);
+  --secondary-foreground: oklch(0.29 0.06 255);
+  --muted: oklch(0.955 0.005 85);
+  --muted-foreground: oklch(0.47 0.02 255);
+  --accent: oklch(0.93 0.03 195);
+  --accent-foreground: oklch(0.33 0.06 200);
+  --teal: oklch(0.5 0.075 195);
+  --teal-foreground: oklch(0.99 0 0);
+  --success: oklch(0.5 0.11 155);
+  --warning: oklch(0.58 0.13 70);
+  --destructive: oklch(0.55 0.2 27);
+  --border: oklch(0.9 0.008 255);
+  --input: oklch(0.88 0.01 255);
+  --ring: oklch(0.5 0.075 195);
+  --chart-1: oklch(0.29 0.06 255);
+  --chart-2: oklch(0.5 0.075 195);
+  --chart-3: oklch(0.7 0.06 195);
+  --chart-4: oklch(0.6 0.02 255);
+  --chart-5: oklch(0.8 0.01 255);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.975 0.005 85);
+  --sidebar-foreground: oklch(0.24 0.035 255);
+  --sidebar-primary: oklch(0.29 0.06 255);
+  --sidebar-primary-foreground: oklch(0.985 0.004 85);
+  --sidebar-accent: oklch(0.93 0.03 195);
+  --sidebar-accent-foreground: oklch(0.29 0.06 255);
+  --sidebar-border: oklch(0.9 0.008 255);
+  --sidebar-ring: oklch(0.5 0.075 195);
+}
+
+.dark {
+  --background: oklch(0.155 0.025 262);
+  --foreground: oklch(0.97 0.005 260);
+  --card: oklch(0.195 0.028 262);
+  --card-foreground: oklch(0.97 0.005 260);
+  --popover: oklch(0.2 0.03 262);
+  --popover-foreground: oklch(0.97 0.005 260);
+  --primary: oklch(0.97 0.005 260);
+  --primary-foreground: oklch(0.18 0.03 262);
+  --secondary: oklch(0.24 0.03 262);
+  --secondary-foreground: oklch(0.97 0.005 260);
+  --muted: oklch(0.23 0.028 262);
+  --muted-foreground: oklch(0.72 0.02 262);
+  --accent: oklch(0.28 0.05 200);
+  --accent-foreground: oklch(0.93 0.04 190);
+  --teal: oklch(0.8 0.11 188);
+  --teal-foreground: oklch(0.18 0.03 262);
+  --success: oklch(0.7 0.12 155);
+  --warning: oklch(0.78 0.13 75);
+  --destructive: oklch(0.7 0.18 25);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.8 0.11 188);
+  --chart-1: oklch(0.9 0.02 200);
+  --chart-2: oklch(0.72 0.08 195);
+  --chart-3: oklch(0.55 0.06 195);
+  --chart-4: oklch(0.6 0.02 255);
+  --chart-5: oklch(0.45 0.02 255);
+  --sidebar: oklch(0.21 0.03 255);
+  --sidebar-foreground: oklch(0.96 0.005 85);
+  --sidebar-primary: oklch(0.72 0.08 195);
+  --sidebar-primary-foreground: oklch(0.2 0.03 255);
+  --sidebar-accent: oklch(0.3 0.035 255);
+  --sidebar-accent-foreground: oklch(0.96 0.005 85);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.08 195);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3 {
+    @apply font-heading tracking-tight text-balance;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---- Public site: warm & human theme ------------------------------------------------------
+   Scoped to .site-warm so the dashboards keep the navy/teal palette. Motion uses
+   transform/opacity only and is static for prefers-reduced-motion. */
+.site-warm {
+  --background: oklch(0.978 0.012 80);
+  --foreground: oklch(0.27 0.03 45);
+  --card: oklch(0.995 0.006 85);
+  --card-foreground: oklch(0.27 0.03 45);
+  --popover: oklch(0.995 0.006 85);
+  --popover-foreground: oklch(0.27 0.03 45);
+  --primary: oklch(0.55 0.13 38);
+  --primary-foreground: oklch(0.99 0.005 80);
+  --secondary: oklch(0.93 0.035 145);
+  --secondary-foreground: oklch(0.32 0.05 150);
+  --muted: oklch(0.95 0.015 75);
+  --muted-foreground: oklch(0.47 0.025 50);
+  --accent: oklch(0.93 0.045 60);
+  --accent-foreground: oklch(0.38 0.08 45);
+  --teal: oklch(0.47 0.07 150);
+  --teal-foreground: oklch(0.99 0.005 80);
+  --border: oklch(0.89 0.02 70);
+  --input: oklch(0.86 0.02 70);
+  --ring: oklch(0.55 0.13 38);
+  --sand: oklch(0.94 0.03 85);
+  --sage: oklch(0.9 0.05 145);
+  --peach: oklch(0.91 0.06 55);
+  --lilac: oklch(0.92 0.035 300);
+  --ink: oklch(0.27 0.03 45);
+}
+
+/* Organic shapes for photos and decorations. */
+.blob-a { border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%; }
+.blob-b { border-radius: 42% 58% 40% 60% / 55% 42% 58% 45%; }
+.blob-c { border-radius: 50% 50% 46% 54% / 60% 45% 55% 40%; }
+@keyframes blob-morph {
+  0%, 100% { border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%; }
+  50% { border-radius: 45% 55% 42% 58% / 56% 44% 56% 44%; }
+}
+.blob-morph { animation: blob-morph 12s ease-in-out infinite; }
+
+/* Gentle floating. */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--tilt, 0deg)); }
+}
+.float-soft { animation: float-soft 6s ease-in-out infinite; }
+
+/* Entrance on load. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in { animation: rise-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pop-in { animation: pop-in 0.6s cubic-bezier(0.2, 0.8, 0.3, 1.2) both; }
+
+/* Hand-drawn underline that draws itself (path uses pathLength="1"). */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.draw-on-load { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.2s 0.6s ease-out forwards; }
+
+/* Friendly button lift. */
+.btn-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn-lift:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px oklch(0.55 0.13 38 / 0.6); }
+
+/* Rotating headline word. */
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(0.45em) rotate(-2deg); filter: blur(3px); }
+  to { opacity: 1; transform: translateY(0) rotate(0); filter: blur(0); }
+}
+.word-in { animation: word-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Chat typing indicator. */
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.55; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+.typing-dot { animation: typing-dot 1s ease-in-out infinite; }
+
+/* Slowly spinning sparkle. */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 16s linear infinite; }
+
+/* Question carousel: progress fill on the active dot, hidden scrollbar. */
+@keyframes carousel-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.carousel-progress { animation: carousel-progress linear both; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Cards that tilt and lift on hover. */
+.tilt-card { transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease; }
+.tilt-card:hover { transform: translateY(-6px) rotate(-0.6deg); box-shadow: 0 30px 60px -30px oklch(0.35 0.05 45 / 0.45); }
+.tilt-card:nth-child(even):hover { transform: translateY(-6px) rotate(0.6deg); }
+
+/* Scroll-driven reveals and path drawing (static where unsupported). */
+@supports (animation-timeline: view()) {
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(48px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .reveal {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 70%;
+  }
+  /* Header gains a soft shadow once the page scrolls. */
+  @keyframes header-raise {
+    to { box-shadow: 0 10px 30px -18px oklch(0.35 0.05 45 / 0.35); background-color: oklch(0.985 0.01 80 / 0.92); }
+  }
+  .header-scroll {
+    animation: header-raise linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 120px;
+  }
+  .draw-on-scroll {
+    stroke-dasharray: 1;
+    animation: draw linear both;
+    animation-timeline: view();
+    animation-range: entry 30% cover 55%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-morph, .float-soft, .rise-in, .pop-in, .reveal, .draw-on-scroll, .word-in, .typing-dot, .spin-slow { animation: none !important; }
+  .tilt-card:hover, .tilt-card:nth-child(even):hover { transform: none; }
+  .draw-on-load { animation: none; stroke-dashoffset: 0; }
+  .btn-lift:hover { transform: none; }
+}
+
+
+/* Long-form reading styles for blog articles and outcome documents. */
+@layer components {
+  .prose-content {
+    @apply max-w-none text-[1.0625rem] leading-relaxed text-foreground/90;
+  }
+  .prose-content h2 { @apply mt-10 mb-3 text-2xl font-semibold text-foreground; }
+  .prose-content h3 { @apply mt-8 mb-2 text-xl font-semibold text-foreground; }
+  .prose-content p { @apply my-4; }
+  .prose-content ul { @apply my-4 list-disc space-y-1.5 pl-6; }
+  .prose-content ol { @apply my-4 list-decimal space-y-1.5 pl-6; }
+  .prose-content a { @apply text-teal underline underline-offset-4 hover:text-primary; }
+  .prose-content blockquote { @apply my-6 border-l-2 border-teal pl-4 italic text-muted-foreground; }
+  .prose-content code { @apply rounded bg-muted px-1.5 py-0.5 text-sm; }
+  .prose-content pre { @apply my-6 overflow-x-auto rounded-lg bg-muted p-4 text-sm; }
+  .prose-content table { @apply my-6 w-full text-sm; }
+  .prose-content th, .prose-content td { @apply border-b px-3 py-2 text-left; }
+  .prose-content hr { @apply my-10; }
+  .prose-content img { @apply my-6 rounded-lg; }
+}

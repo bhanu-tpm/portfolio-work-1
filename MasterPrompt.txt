@@ -1,0 +1,599 @@
+# MASTER DEVELOPMENT PROMPT: AI-POWERED CAREER CONSULTATION PLATFORM
+
+## 1. Your Role
+
+Act as a senior full-stack software architect, AI engineer, UI/UX designer, database engineer, and security specialist.
+
+Design, develop, test, and document a complete, production-ready, AI-powered personal career consultation platform.
+
+Do not build only a landing page, static design, or clickable prototype. Build a functional application with a real database, authentication, server-side business logic, AI integration, appointment scheduling, private file storage, and an administrator dashboard.
+
+Work incrementally, validate every major workflow, and prioritize reliability, security, maintainability, and user experience.
+
+## 2. Product Vision
+
+Create a professional personal-brand platform through which I can provide career and education-related consultation to:
+
+- College students.
+- Recent graduates.
+- Students exploring higher education and specialization options.
+- Job seekers and early-career professionals.
+- Individuals seeking career transitions, skill development, or professional direction.
+
+The platform should help me manage the complete consultation lifecycle, from initial requirements gathering to appointment scheduling, conducting the consultation, preparing personalized recommendations, approving the outcome, and delivering the final document securely.
+
+AI should act as a consultation assistant, research and drafting aid, and student guidance tool. It must not replace my professional judgment or independently make final consultation decisions.
+
+The platform must be mobile-first, fully responsive, easy to administer, and scalable for future enhancements.
+
+## 3. Recommended Technology Stack
+
+Use the following technologies, provided they are supported by the development environment:
+
+- Frontend: Next.js, React, and TypeScript.
+- Styling: Tailwind CSS and shadcn/ui.
+- Backend: Next.js server-side routes and server actions, or an equivalent secure backend.
+- Database: PostgreSQL.
+- Authentication: Supabase Auth.
+- Database security: PostgreSQL Row-Level Security and server-side authorization.
+- File storage: Private Supabase Storage buckets.
+- AI integration: OpenAI API, accessed exclusively through secure server-side endpoints.
+- Email notifications: Resend or an equivalent transactional email provider.
+- Validation: Zod or an equivalent schema validation library.
+- Testing: Unit tests, integration tests, and end-to-end tests.
+- Deployment: Vercel or a compatible hosting provider.
+
+Use the current supported SDKs and API patterns at implementation time. Avoid deprecated libraries and unnecessary dependencies.
+
+Keep all API keys, database secrets, and service-role credentials on the server. Use environment variables and provide an example environment configuration file without real secrets.
+
+## 4. Design System and User Experience
+
+Create a modern, minimal, premium-looking personal consulting website.
+
+Design characteristics:
+- Professional and approachable visual identity.
+- Deep navy, muted teal, off-white, and neutral gray palette.
+- Strong typography and clear information hierarchy.
+- Generous whitespace and readable content.
+- Subtle transitions and restrained animations.
+- Consistent forms, cards, dialogs, badges, and navigation.
+- Clear success, loading, validation, empty, and error states.
+
+Build mobile-first layouts and test them at common mobile, tablet, and desktop widths.
+
+Make the interface accessible, keyboard-friendly, and compliant with appropriate contrast standards.
+
+Avoid excessive animations, unnecessary decorative graphics, cluttered dashboards, and generic template-like layouts.
+
+## 5. Public Website
+
+### 5.1 Home Page
+
+Create a professional landing page containing:
+
+- Consultant introduction and professional headline.
+- Concise explanation of the services offered.
+- Primary CTA: Book a Consultation.
+- Secondary CTA: Explore My Portfolio.
+- Consultation category overview.
+- Three-step consultation process.
+- Short biography and credibility section.
+- Recent blog posts.
+- Optional preview of the AI career guidance assistant.
+- Contact details and footer.
+
+Use realistic placeholder content only where information has not been supplied.
+
+### 5.2 Consultation Services
+
+Support configurable categories such as:
+
+- Career Planning and Direction.
+- Higher Education and Academic Decisions.
+- Skills and Professional Development.
+- Resume and Professional Profile Guidance.
+- Job Search and Career Transition.
+- General Career Consultation.
+
+Each category should contain a title, short description, expected scope, consultation format, and relevant intake questions.
+
+The administrator must be able to create, edit, reorder, and disable categories without changing application code.
+
+### 5.3 Portfolio
+
+Create a concise portfolio page containing:
+
+- Profile photo.
+- Name and professional headline.
+- Short biography.
+- Areas of expertise.
+- Selected experience and projects.
+- Qualifications and certifications.
+- Professional approach.
+- Consultation CTA.
+
+Make all portfolio content editable through the admin dashboard. Do not fabricate experience, credentials, testimonials, or achievements.
+
+### 5.4 Blog
+
+Create a read-only public blog with:
+
+- Blog listing and article detail pages.
+- Categories, tags, cover images, excerpts, and publication dates.
+- Search and category filtering.
+- SEO-friendly URLs and metadata.
+- Responsive reading layouts.
+
+The administrator must be able to create, edit, preview, save drafts, publish, unpublish, and delete articles.
+
+Do not allow public article submissions or comments in the initial release.
+
+### 5.5 Contact
+
+Build a validated contact form with spam protection, a confirmation message, and configured email notifications.
+
+## 6. Consultation Requirements and Intake Workflow
+
+Create a structured consultation request form containing:
+
+- Name and email.
+- Optional phone number.
+- Education or professional status.
+- College or organization, where applicable.
+- Course, degree, or specialization.
+- Consultation category.
+- Description of the challenge.
+- Career goals and current concerns.
+- Questions the client wants answered.
+- Expected outcomes.
+- Preferred consultation format.
+- Optional preferred appointment date.
+- Optional relevant attachments.
+- Privacy notice and consent.
+
+Validate all submissions on the server, save them in the database, generate a unique reference ID, and notify the administrator.
+
+Request statuses:
+- Submitted.
+- Under Review.
+- More Information Required.
+- Accepted.
+- Declined.
+- Completed.
+
+The client must be able to track the status through an authenticated dashboard.
+
+The administrator can add private notes, change statuses, request clarification, accept requests, or decline them.
+
+Keep administrator-only notes completely separate from client-visible information.
+
+## 7. Recommended AI Integration Strategy
+
+Implement AI as a staged capability rather than making every feature dependent on AI.
+
+Use the following priority order.
+
+### Phase A: Administrator-Assisted AI — Implement First
+
+These features provide immediate value while keeping you in control.
+
+#### A1. AI Consultation Requirement Analyzer
+
+When a consultation request is submitted, allow the AI service to analyze the information and produce:
+
+- A concise client situation summary.
+- Education and career context.
+- Main challenges and stated goals.
+- Key questions to address.
+- Missing information and suggested follow-up questions.
+- Potential consultation topics.
+- A proposed consultation preparation checklist.
+
+Display the analysis privately in the admin dashboard.
+
+Requirements:
+- Preserve the original client submission.
+- Clearly label AI-generated content.
+- Allow the administrator to regenerate, edit, or ignore the analysis.
+- Do not automatically accept or reject consultation requests.
+- Do not expose internal summaries or private notes to other clients.
+- Avoid making unsupported assumptions about the client's abilities, personality, or prospects.
+
+If analysis fails, the consultation request must still be saved and usable.
+
+#### A2. AI Consultation Outcome Drafting
+
+Provide an AI-assisted editor in the admin dashboard.
+
+The administrator can select relevant information from:
+- The client's original requirements.
+- The consultation preparation summary.
+- Consultant-entered session notes.
+- Selected recommendations and resources.
+
+The AI generates a structured draft containing:
+
+1. Consultation overview.
+2. Client goals and challenges.
+3. Key discussion points.
+4. Personalized recommendations.
+5. Suggested skills and learning resources.
+6. Action plan.
+7. Suggested milestones and review dates.
+8. Follow-up recommendations.
+
+Allow the administrator to edit the draft, regenerate selected sections, save versions, and export or upload a final PDF.
+
+Never automatically treat generated content as an approved outcome.
+
+The document must remain private until the administrator explicitly approves and publishes it.
+
+#### A3. AI-Assisted Resource Suggestions
+
+Allow the AI to suggest relevant courses, learning resources, career exploration tools, and official educational resources.
+
+When factual accuracy matters, prefer verified sources and current information. Where web retrieval is available, provide source links and distinguish verified facts from general suggestions.
+
+Never invent course URLs, accreditation, placement statistics, salary figures, admissions requirements, or job guarantees.
+
+### Phase B: Student-Facing AI — Add After Phase A
+
+#### B1. AI Career Guidance Assistant
+
+Build an optional conversational assistant for students.
+
+The assistant should gather context gradually, asking relevant questions about:
+
+- Current education or career stage.
+- Interests and preferred activities.
+- Existing skills and experience.
+- Career goals.
+- Constraints such as time, location, and budget, where relevant.
+- Uncertainties or decisions the student is facing.
+
+Based on the answers, it can provide:
+
+- Potential career paths to explore.
+- Skills that may be useful.
+- Suggested learning plans.
+- Questions for self-reflection.
+- Possible next steps.
+- Relevant consultation categories.
+- An option to book a human consultation.
+
+The assistant should explain that career recommendations are exploratory rather than definitive assessments.
+
+Do not claim to determine a student's ideal career with scientific certainty. Do not infer sensitive traits, make discriminatory recommendations, or guarantee jobs, salaries, admissions, or career success.
+
+Where appropriate, offer to save a summary to the student's consultation request with their explicit consent.
+
+Keep chatbot history private to the authenticated user and provide a way to clear it.
+
+#### B2. AI Resume Review
+
+Introduce an optional resume review tool for relevant consultation categories.
+
+The tool can provide feedback on:
+- Resume structure and clarity.
+- Skills presentation.
+- Achievement descriptions.
+- Alignment with a stated target role.
+- Readability and completeness.
+- Potential improvements.
+
+Do not fabricate experience or qualifications. Clearly label any suggested rewritten statements for the user to verify.
+
+Obtain consent before processing uploaded documents and restrict access to the original files and extracted content.
+
+### Phase C: Optional Future AI Features
+
+Design the architecture so that these can be added later:
+
+- AI-assisted career action plan generation.
+- Interview practice and feedback.
+- Job description and resume comparison.
+- AI-assisted consultation follow-up summaries.
+- A searchable knowledge base based on approved blog articles and consultant-authored resources.
+
+Do not implement all future features in the initial release. Prioritize the core consultation workflow and the first two administrator-assisted AI features.
+
+## 8. AI Technical Architecture
+
+Create a reusable server-side AI service layer.
+
+Separate responsibilities into components such as:
+
+- AI provider client.
+- Consultation intake analyzer.
+- Outcome draft generator.
+- Career guidance assistant.
+- Resume analysis service.
+- Output validation and moderation.
+- AI usage tracking.
+
+Use structured JSON outputs validated against server-side schemas.
+
+Store relevant metadata, including feature type, model identifier, request status, timestamps, and token usage where available.
+
+Implement:
+- Request timeouts.
+- Retry policies for appropriate transient failures.
+- Usage limits and rate limiting.
+- Error handling and user-friendly failure messages.
+- Configurable model settings.
+- Usage and cost monitoring.
+- Safe handling of malformed or incomplete model outputs.
+
+Use the current supported OpenAI API and SDK. Do not expose API keys in the browser or embed secrets in prompts.
+
+Keep AI features independently configurable so that disabling AI does not disable consultation booking, client dashboards, or outcome management.
+
+### AI Privacy and Data Minimization
+
+Before sending data to an external AI provider:
+
+- Send only the information required for the requested task.
+- Remove unnecessary personal identifiers where feasible.
+- Clearly disclose relevant AI processing in the privacy notice.
+- Obtain consent where required.
+- Avoid sending unrelated client records or private administrator notes.
+- Define appropriate retention and deletion policies.
+
+Treat client submissions, uploaded documents, and extracted text as untrusted content. Ignore instructions embedded in documents that attempt to change system behavior, reveal secrets, or access other records.
+
+Never permit model-generated output to execute database queries, modify permissions, publish content, approve outcomes, or invoke privileged operations without explicit server-side authorization.
+
+## 9. Appointment Booking
+
+Build a complete appointment management system.
+
+Administrator capabilities:
+- Set weekly working hours.
+- Define appointment durations and buffer periods.
+- Block dates and time ranges.
+- Configure available consultation formats.
+- View upcoming and completed appointments.
+- Confirm, reschedule, cancel, and mark appointments as completed.
+
+Client capabilities:
+- View available slots.
+- Book an appointment associated with an accepted request.
+- Receive a booking confirmation.
+- View upcoming and past appointments.
+- Request rescheduling or cancellation.
+
+Requirements:
+- Prevent double booking using database constraints or transactional conflict checks.
+- Validate slots on the server immediately before booking.
+- Handle concurrent booking requests safely.
+- Use a configurable timezone, initially Asia/Kolkata.
+- Send email confirmations and reminders when configured.
+- Keep booking rules configurable.
+
+Do not require AI for scheduling. Use deterministic application logic for availability, time conflicts, and booking state.
+
+## 10. Client Dashboard
+
+Create protected sections for:
+
+- Overview.
+- Consultation Requests.
+- Appointments.
+- Consultation Outcomes.
+- AI Career Guidance.
+- Resume Review, when enabled.
+- Profile and Privacy Settings.
+
+Clients must only access their own information.
+
+Show clear status indicators, booking details, available outcomes, and relevant notifications.
+
+AI features must be optional and must not block access to the ordinary consultation service.
+
+## 11. Consultation Outcome Approval and Secure Downloads
+
+Create a dedicated outcome management workflow.
+
+Administrator capabilities:
+- Create an outcome linked to a client, request, and appointment.
+- Enter or edit the consultation summary.
+- Generate an AI draft where appropriate.
+- Edit recommendations and action items.
+- Upload or generate a PDF.
+- Save drafts and versions.
+- Review and explicitly approve the final outcome.
+- Publish or supersede an existing version.
+
+Client capabilities:
+- See the outcome status.
+- Receive a notification when the outcome is published.
+- View approved outcomes in the dashboard.
+- Download their approved documents.
+
+Security requirements:
+- Store files in private buckets.
+- Enforce authorization on every file request.
+- Verify both client ownership and outcome approval before download.
+- Use short-lived signed URLs or authenticated download endpoints.
+- Do not rely on frontend visibility for authorization.
+- Restrict file types and sizes.
+- Maintain an audit trail of publication and replacement.
+
+No AI model may independently approve, publish, or release consultation outcomes.
+
+## 12. Admin Dashboard
+
+Create a secure administrator interface with:
+
+- Overview and activity metrics.
+- Consultation request management.
+- AI intake summaries.
+- Client management.
+- Appointment calendar and availability.
+- Consultation outcome editor and approval queue.
+- Secure document management.
+- Blog CMS.
+- Portfolio editor.
+- Consultation category management.
+- Email configuration.
+- AI settings and usage dashboard.
+- Privacy, retention, and application settings.
+
+Provide filtering, search, pagination, validation, confirmation dialogs, and appropriate error states.
+
+Protect all admin routes and operations with server-side role checks. Do not allow public users to register as administrators.
+
+## 13. Database Schema
+
+Create normalized PostgreSQL tables with suitable foreign keys, indexes, constraints, and timestamps.
+
+Include:
+- Users and profiles.
+- Roles and permissions.
+- Consultation categories.
+- Consultation requests.
+- Request status history.
+- Administrator notes.
+- Appointments.
+- Availability and blocked slots.
+- Consultation outcomes.
+- Outcome document versions.
+- Private file metadata.
+- Blog posts, categories, and tags.
+- AI analysis records.
+- AI conversation history, if enabled.
+- AI usage and execution metadata.
+- Notification records.
+- Audit logs.
+
+Link AI analyses to the relevant consultation request or outcome.
+
+Keep original user submissions separate from generated AI content. Record which generated content has been reviewed and by whom.
+
+Use appropriate row-level security policies and server-side authorization checks.
+
+## 14. Notifications
+
+Support configurable email notifications for:
+
+- New consultation requests.
+- Request status changes.
+- Requests requiring more information.
+- Appointment confirmations and changes.
+- Appointment reminders.
+- Consultation outcomes becoming available.
+- Relevant account events.
+
+Use a transactional email provider and record delivery status.
+
+Handle provider failures without losing the underlying consultation request or appointment.
+
+## 15. Security and Reliability
+
+Implement:
+
+- Secure authentication and password recovery.
+- Server-side authorization.
+- Database row-level security.
+- Input validation and output encoding.
+- Rate limiting and abuse protection.
+- Secure private file uploads and downloads.
+- AI request validation.
+- Protection against prompt injection and unauthorized tool use.
+- Safe handling of external links and generated content.
+- Audit logs for important administrative actions.
+- Environment-based secrets management.
+- Error monitoring and database backup guidance.
+- Accessibility and responsive design.
+
+Never use mock authentication or pretend that an external service is configured when credentials are missing.
+
+## 16. Implementation Plan
+
+Build the application in the following order.
+
+### Phase 1: Core Foundation
+- Initialize the project.
+- Set up the database and migrations.
+- Implement authentication and authorization.
+- Build public pages and portfolio.
+- Build consultation categories and intake forms.
+- Build the administrator request dashboard.
+
+### Phase 2: Scheduling and Client Management
+- Implement appointment availability.
+- Implement safe booking and conflict prevention.
+- Build client dashboards.
+- Add booking notifications.
+
+### Phase 3: First AI Integration
+- Implement the AI provider abstraction.
+- Implement the consultation intake analyzer.
+- Add the private AI summary to the admin dashboard.
+- Implement AI-assisted outcome drafting.
+- Validate generated outputs and add usage tracking.
+
+### Phase 4: Outcome Management
+- Build the outcome editor.
+- Implement approval and version history.
+- Add private PDF storage.
+- Implement authenticated downloads.
+- Test all client ownership and approval checks.
+
+### Phase 5: Content and Student-Facing AI
+- Implement the blog CMS.
+- Implement portfolio editing.
+- Add the optional career guidance assistant.
+- Add optional resume review.
+- Configure privacy controls and usage limits.
+
+### Phase 6: Testing and Deployment
+- Run database, authentication, booking, and authorization tests.
+- Test AI failure handling and malformed outputs.
+- Test private document downloads.
+- Test mobile and desktop responsiveness.
+- Document setup and deployment.
+- Verify all required environment variables and external integrations.
+
+## 17. Acceptance Criteria
+
+The platform is complete when:
+
+1. The public website, portfolio, and blog work.
+2. Clients can submit and track consultation requests.
+3. The administrator can manage the full request lifecycle.
+4. Appointments can be booked without double booking.
+5. The AI intake analyzer produces editable private summaries.
+6. The AI outcome generator produces editable drafts.
+7. No AI-generated outcome is published without administrator approval.
+8. Clients can download only their own approved documents.
+9. Blog posts and portfolio content can be managed without editing code.
+10. Optional student-facing AI features work within defined privacy and usage limits.
+11. The application remains usable if the AI provider is unavailable.
+12. All primary features work on mobile and desktop.
+13. Critical authorization and workflow tests pass.
+14. Setup, migration, deployment, and environment configuration documentation is provided.
+
+## 18. Final Development Instructions
+
+Start by presenting the architecture, database schema, API routes, page structure, and implementation plan.
+
+Then implement the application incrementally. Do not stop after presenting the plan or generating a visual prototype.
+
+After each phase:
+- Summarize the implemented features.
+- Run relevant tests.
+- Identify incomplete integrations.
+- Fix critical failures before moving forward.
+
+At completion, provide:
+- Implemented functionality.
+- Test results.
+- Required environment variables.
+- External service setup instructions.
+- Local development instructions.
+- Deployment instructions.
+- Known limitations.
+
+Prioritize a secure, functional consultation platform with useful AI assistance over a large collection of untested AI features.
