@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Compass, Lightbulb, ListChecks, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { languageAlternates } from "@/i18n/config";
 import { getI18n } from "@/i18n/server";
+import { isAiConfigured } from "@/lib/env";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t, href } = await getI18n();
@@ -18,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const ICONS = [Compass, Lightbulb, ListChecks, ShieldCheck];
 
 export default async function AssistantPreviewPage() {
+  if (!isAiConfigured()) notFound();
   const { t: dict } = await getI18n();
   const t = dict.assistantPage;
   return (

@@ -58,7 +58,7 @@ git config --global user.email "you@example.com"
    select public.grant_admin('you@example.com');
    ```
 
-AI features (OpenAI key) and email sending (Resend) are optional. Without them the app shows
+AI features (OpenAI key, or a free Google Gemini key) and email sending (Resend) are optional. Without them the app shows
 "not configured" for those features. See [SETUP.md](SETUP.md) sections 3 and 4.
 
 ## 5. Save and push changes

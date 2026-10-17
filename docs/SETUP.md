@@ -4,7 +4,7 @@
 
 - Node.js 20.9+ (developed on Node 24) and npm
 - A Supabase project (free tier is fine)
-- Optional: an OpenAI API key (AI features), a Resend account with a verified domain (email), a Vercel account (hosting)
+- Optional: an OpenAI or Google Gemini API key (AI features), a Resend account with a verified domain (email), a Vercel account (hosting)
 
 The app runs without OpenAI and Resend. AI features show "not configured", and notifications are
 recorded with status `skipped` instead of being sent. It never pretends a missing service works.
@@ -35,7 +35,7 @@ recorded with status `skipped` instead of being sent. It never pretends a missin
 6. **Storage:** the migrations create the buckets (`request-files`, `outcome-documents` and `resumes` are private; `public-media` is public).
    No storage policies are needed: private files are only accessed by server code after authorization checks.
 
-## 3. OpenAI (optional)
+## 3. AI: OpenAI or Google Gemini (optional)
 
 - Set `OPENAI_API_KEY` and `AI_ENABLED=true`.
 - `OPENAI_MODEL` defaults to `gpt-5-mini`. Use any current model that supports structured outputs in the
@@ -45,6 +45,20 @@ recorded with status `skipped` instead of being sent. It never pretends a missin
 - `AI_WEB_SEARCH=true` lets resource suggestions use OpenAI's web search tool. Only links the search actually cited are shown;
   everything else is marked as an unverified suggestion.
 - Requests are sent with `store: false`. Client names, emails, phone numbers and links are removed before sending.
+
+### Google Gemini instead of OpenAI (free tier available)
+
+- Create a key at <https://aistudio.google.com> (*Get API key*; no card needed for the free tier).
+- Set `AI_PROVIDER=gemini`, `GEMINI_API_KEY` and `AI_ENABLED=true`. `OPENAI_API_KEY` is then not needed.
+- `GEMINI_MODEL` defaults to `gemini-flash-latest` (Google's alias for its current Flash model). The admin model
+  override in *Admin → Settings* applies to whichever provider is selected, so clear it when switching providers.
+- Cost estimates default to 0 for Gemini (free tier), so the monthly budget never blocks it. On a paid plan, set
+  `GEMINI_INPUT_PRICE_PER_MTOK` / `GEMINI_OUTPUT_PRICE_PER_MTOK`.
+- Differences from OpenAI: there is no web search (`AI_WEB_SEARCH` is ignored), and because Gemini has no moderation
+  endpoint, each assistant message is first classified by Gemini itself, so it uses two requests of the free quota.
+- Free-tier terms allow Google to use requests to improve its products. The privacy notice switches to that wording
+  automatically when `AI_PROVIDER=gemini`.
+- When the free quota runs out, users see "temporarily unavailable" and the AI usage log records the quota error.
 
 ## 4. Resend (optional)
 

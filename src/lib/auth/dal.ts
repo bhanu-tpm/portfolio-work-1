@@ -1,6 +1,7 @@
 import "server-only";
 import { cache } from "react";
 import { notFound, redirect } from "next/navigation";
+import { connection } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/env";
 import type { AppRole, Profile } from "@/lib/db/types";
@@ -19,6 +20,8 @@ export interface CurrentUser {
  */
 export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
   if (!isSupabaseConfigured()) return null;
+  // getClaims compares the token expiry with the current time, so it must run at request time.
+  await connection();
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getClaims();
   const sub = data?.claims?.sub;

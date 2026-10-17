@@ -55,6 +55,7 @@ describe("consultation request validation", () => {
     expectedOutcomes: "A clear decision",
     preferredFormat: "video",
     consentPrivacy: "on",
+    acceptDisclaimer: "on",
   };
   it("normalises input", () => {
     const parsed = consultationRequestSchema.parse(base);
@@ -64,6 +65,10 @@ describe("consultation request validation", () => {
   });
   it("requires privacy consent", () => {
     const result = consultationRequestSchema.safeParse({ ...base, consentPrivacy: undefined });
+    expect(result.success).toBe(false);
+  });
+  it("requires accepting the disclaimer", () => {
+    const result = consultationRequestSchema.safeParse({ ...base, acceptDisclaimer: undefined });
     expect(result.success).toBe(false);
   });
   it("rejects a too-short challenge description", () => {

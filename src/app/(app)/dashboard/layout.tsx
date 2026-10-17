@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AppShell } from "@/components/shell/app-shell";
 import type { ShellNavItem } from "@/components/shell/nav-links";
+import { isAiConfigured } from "@/lib/env";
 
 export const metadata: Metadata = { title: "Dashboard", robots: { index: false } };
 
@@ -14,9 +15,12 @@ const NAV: ShellNavItem[] = [
   { href: "/dashboard/settings", label: "Profile and privacy", icon: "settings" },
 ];
 
+const AI_PATHS = ["/dashboard/assistant", "/dashboard/resume"];
+
 export default function DashboardLayout({ children }: LayoutProps<"/dashboard">) {
+  const nav = isAiConfigured() ? NAV : NAV.filter((item) => !AI_PATHS.includes(item.href));
   return (
-    <AppShell nav={NAV} area="Client">
+    <AppShell nav={nav} area="Client">
       {children}
     </AppShell>
   );

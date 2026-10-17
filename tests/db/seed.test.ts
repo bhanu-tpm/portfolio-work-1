@@ -9,7 +9,7 @@ describe("seed data", () => {
     await t.db.exec(readFileSync(path.join(process.cwd(), "supabase", "seed.sql"), "utf8"));
 
     const categories = await t.as("anon", null, (q) => q("select slug from public.consultation_categories"));
-    expect(categories.rows).toHaveLength(6);
+    expect(categories.rows).toHaveLength(14);
 
     const posts = await t.as("anon", null, (q) => q("select slug from public.blog_posts"));
     expect(posts.rows).toHaveLength(2);

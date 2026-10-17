@@ -6,13 +6,21 @@ import {
   ArrowRight,
   BriefcaseBusiness,
   Check,
+  ClipboardCheck,
   Clock,
   Compass,
   FileText,
   GraduationCap,
+  Landmark,
+  Lightbulb,
   MessageCircleQuestion,
+  MessagesSquare,
   MonitorSmartphone,
+  Plane,
+  Rocket,
+  Signpost,
   Sparkles,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "cn";
@@ -29,6 +37,14 @@ const ICONS: Record<string, LucideIcon> = {
   "resume-guidance": FileText,
   "job-search-transition": BriefcaseBusiness,
   general: MessageCircleQuestion,
+  "stream-selection": Signpost,
+  "entrance-exams-colleges": ClipboardCheck,
+  "interview-preparation": MessagesSquare,
+  "internship-first-job": Rocket,
+  "study-abroad": Plane,
+  "project-guidance": Lightbulb,
+  "government-exams": Landmark,
+  "parent-consultation": Users,
 };
 const PASTELS = ["var(--peach)", "var(--sage)", "var(--lilac)", "var(--sand)"];
 const SHAPES = ["blob-a", "blob-b", "blob-c"];

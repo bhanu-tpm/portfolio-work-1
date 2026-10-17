@@ -38,6 +38,8 @@ export const auth = {
     creatingAccount: "Creating account…",
     acceptBefore: "I have read the ",
     privacyLink: "privacy notice",
+    andThe: " and ",
+    disclaimerLink: "disclaimer",
     acceptAfter: ".",
     sendReset: "Send reset link",
     sending: "Sending…",

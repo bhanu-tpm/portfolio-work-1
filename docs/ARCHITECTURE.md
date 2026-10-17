@@ -13,7 +13,7 @@ decision maker.
 | Auth | Supabase Auth (email + password, email confirmation, password recovery) |
 | Database | Supabase Postgres, SQL migrations in `supabase/migrations`, Row-Level Security on every table |
 | Files | Private Supabase Storage buckets (`request-files`, `outcome-documents`, `resumes`); public bucket `public-media` for blog covers and the profile photo |
-| AI | OpenAI Responses API through a server-only provider abstraction (`src/lib/ai`) |
+| AI | OpenAI Responses API or Google Gemini (`AI_PROVIDER`) through a server-only provider abstraction (`src/lib/ai`) |
 | Email | Resend (optional; every send is recorded in `notifications` with its delivery status) |
 | Validation | Zod 4 on every server action and route handler |
 | Tests | Vitest (unit), PGlite (real Postgres in WASM) for migrations + RLS, Playwright (smoke e2e) |

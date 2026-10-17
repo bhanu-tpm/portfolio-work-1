@@ -3,6 +3,7 @@ import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import type { z } from "zod";
 import { env } from "@/lib/env";
+import { GeminiProvider } from "./gemini";
 
 export type AiErrorCode =
   | "disabled"
@@ -98,7 +99,13 @@ interface ParsedResponseLike {
 function mapProviderError(err: unknown): AiError {
   if (err instanceof AiError) return err;
   if (err instanceof OpenAI.APIConnectionTimeoutError) return new AiError("timeout");
-  if (err instanceof OpenAI.RateLimitError) return new AiError("rate_limited", "Provider rate limit");
+  // A provider 429 is not the user's own daily limit ("rate_limited"), so it must not be reported as one.
+  // insufficient_quota means the OpenAI account has no credits left: only the site owner can fix it.
+  if (err instanceof OpenAI.RateLimitError) {
+    return err.type === "insufficient_quota" || err.code === "insufficient_quota"
+      ? new AiError("provider_error", `Provider quota exhausted (add OpenAI credits): ${err.message}`)
+      : new AiError("provider_error", `Provider rate limit: ${err.message}`);
+  }
   if (err instanceof OpenAI.AuthenticationError) return new AiError("not_configured", "Invalid API key");
   if (err instanceof OpenAI.APIError) return new AiError("provider_error", `${err.status ?? ""} ${err.message}`.trim());
   if (err instanceof Error && err.name === "AbortError") return new AiError("timeout");
@@ -199,5 +206,6 @@ export function setAiProviderForTesting(provider: AiProvider | null) {
 }
 
 export function getAiProvider(): AiProvider {
-  return providerOverride ?? new OpenAIProvider();
+  if (providerOverride) return providerOverride;
+  return env.aiProvider() === "gemini" ? new GeminiProvider() : new OpenAIProvider();
 }

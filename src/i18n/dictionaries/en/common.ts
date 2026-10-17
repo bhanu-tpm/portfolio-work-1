@@ -7,6 +7,7 @@ export const common = {
     aiGuidance: "AI guidance",
     contact: "Contact",
     privacy: "Privacy",
+    disclaimer: "Disclaimer",
   },
   header: {
     signIn: "Sign in",

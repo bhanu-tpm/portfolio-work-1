@@ -25,7 +25,7 @@ export const signUpSchema = z.object({
   fullName: requiredText(2, 120, "Name"),
   email: emailField,
   password: passwordField,
-  acceptTerms: checkbox.refine((v) => v, "Please accept the privacy notice"),
+  acceptTerms: checkbox.refine((v) => v, "Please accept the privacy notice and disclaimer"),
 });
 
 export const signInSchema = z.object({
@@ -85,6 +85,7 @@ export const consultationRequestSchema = z.object({
     z.iso.date("Enter a valid date").optional(),
   ),
   consentPrivacy: checkbox.refine((v) => v, "You must accept the privacy notice to continue"),
+  acceptDisclaimer: checkbox.refine((v) => v, "You must accept the disclaimer to continue"),
   consentAi: checkbox,
 });
 export type ConsultationRequestInput = z.infer<typeof consultationRequestSchema>;

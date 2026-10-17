@@ -28,6 +28,9 @@ interface TurnExtras {
   suggestHumanConsultation: boolean;
 }
 
+/** After this many messages, always offer the human consultation, even if the model did not suggest it. */
+const HANDOFF_AFTER_MESSAGES = 3;
+
 let counter = 0;
 const nextId = () => `m${Date.now()}-${counter++}`;
 
@@ -109,6 +112,12 @@ export function AssistantChat({
   }
 
   const remaining = ASSISTANT_MESSAGE_MAX - draft.length;
+  const userMessageCount = messages.filter((m) => m.role === "user" && !m.ephemeral).length;
+  const suggestedCategories = extras?.suggestedCategories ?? [];
+  const showHandoff =
+    suggestedCategories.length > 0 ||
+    Boolean(extras?.suggestHumanConsultation) ||
+    userMessageCount >= HANDOFF_AFTER_MESSAGES;
 
   return (
     <div className="grid gap-4">
@@ -220,12 +229,16 @@ export function AssistantChat({
         </form>
       </div>
 
-      {extras && (extras.suggestedCategories.length > 0 || extras.suggestHumanConsultation) ? (
+      {showHandoff ? (
         <div className="rounded-xl bg-accent/40 p-4 ring-1 ring-foreground/10">
-          <p className="text-sm font-medium">A consultation could help with this</p>
-          {extras.suggestedCategories.length > 0 ? (
-            <ul className="mt-2 flex flex-wrap gap-2">
-              {extras.suggestedCategories.map((c) => (
+          <p className="text-sm font-medium">Talk this through with the consultant</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            The assistant gives general pointers. For advice based on your full situation, book a one-to-one
+            consultation{summary ? " and share this conversation's summary with your request" : ""}.
+          </p>
+          {suggestedCategories.length > 0 ? (
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {suggestedCategories.map((c) => (
                 <li key={c.id}>
                   <Button asChild variant="outline" size="sm">
                     <Link href={`/dashboard/requests/new?category=${encodeURIComponent(c.id)}`}>{c.title}</Link>
@@ -234,11 +247,9 @@ export function AssistantChat({
               ))}
             </ul>
           ) : null}
-          {extras.suggestHumanConsultation ? (
-            <Button asChild size="sm" className="mt-3">
-              <Link href="/dashboard/requests/new">Book a human consultation</Link>
-            </Button>
-          ) : null}
+          <Button asChild size="sm" className="mt-3">
+            <Link href="/dashboard/requests/new">Book a consultation</Link>
+          </Button>
         </div>
       ) : null}
 

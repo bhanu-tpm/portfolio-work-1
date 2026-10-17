@@ -175,7 +175,7 @@ export default async function AiUsagePage({ searchParams }: PageProps<"/admin/ai
       <div className="grid gap-6">
         {!isAiConfigured() ? (
           <p className="rounded-lg bg-warning/10 p-3 text-sm" role="note">
-            OpenAI is not configured (or AI_ENABLED=false), so no new AI runs will be recorded.
+            AI is not configured (or AI_ENABLED=false), so no new AI runs will be recorded.
           </p>
         ) : null}
 

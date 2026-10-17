@@ -20,7 +20,8 @@ interface Integration {
 
 function integrations(): Integration[] {
   const aiEnabledFlag = env.aiEnabled();
-  const aiKey = Boolean(env.openaiApiKey());
+  const aiKey = Boolean(env.aiApiKey());
+  const aiProviderLabel = env.aiProvider() === "gemini" ? "Google Gemini" : "OpenAI";
   return [
     {
       name: "Supabase (public client)",
@@ -35,14 +36,17 @@ function integrations(): Integration[] {
       vars: "SUPABASE_SECRET_KEY",
     },
     {
-      name: "OpenAI",
+      name: `AI (${aiProviderLabel})`,
       configured: isAiConfigured(),
       detail: !aiEnabledFlag
         ? "Turned off with AI_ENABLED=false."
         : aiKey
           ? `Enabled. Default model: ${env.aiModel()}.`
-          : "AI_ENABLED is on but no API key is set.",
-      vars: "AI_ENABLED, OPENAI_API_KEY, OPENAI_MODEL",
+          : `AI_ENABLED is on but no ${env.aiProvider() === "gemini" ? "GEMINI_API_KEY" : "OPENAI_API_KEY"} is set.`,
+      vars:
+        env.aiProvider() === "gemini"
+          ? "AI_ENABLED, AI_PROVIDER=gemini, GEMINI_API_KEY, GEMINI_MODEL"
+          : "AI_ENABLED, AI_PROVIDER, OPENAI_API_KEY, OPENAI_MODEL",
     },
     {
       name: "Resend email",

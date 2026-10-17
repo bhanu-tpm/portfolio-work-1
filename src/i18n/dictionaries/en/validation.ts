@@ -12,7 +12,7 @@ export const validation = {
     passwordMin: "Use at least 10 characters",
     passwordMax: "Use at most 72 characters",
     passwordMix: "Include at least one letter and one number",
-    acceptPrivacy: "Please accept the privacy notice",
+    acceptPrivacy: "Please accept the privacy notice and disclaimer",
     enterPassword: "Enter your password",
     passwordsMismatch: "Passwords do not match",
   },

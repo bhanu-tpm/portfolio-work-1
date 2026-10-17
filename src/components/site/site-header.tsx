@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/auth/dal";
 import { getI18n } from "@/i18n/server";
+import { isAiConfigured } from "@/lib/env";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
@@ -15,9 +16,14 @@ export const PUBLIC_NAV: { path: string; key: keyof Dictionary["common"]["nav"] 
   { path: "/contact", key: "contact" },
 ];
 
+/** PUBLIC_NAV without the AI guidance link while AI is switched off (AI_ENABLED=false or no API key). */
+export function publicNav() {
+  return isAiConfigured() ? PUBLIC_NAV : PUBLIC_NAV.filter((item) => item.path !== "/assistant");
+}
+
 export async function SiteHeader({ siteName }: { siteName: string }) {
   const { t, href } = await getI18n();
-  const items = PUBLIC_NAV.map((item) => ({ href: href(item.path), label: t.common.nav[item.key] }));
+  const items = publicNav().map((item) => ({ href: href(item.path), label: t.common.nav[item.key] }));
   const labels = { signIn: t.common.header.signIn, dashboard: t.common.header.dashboard, admin: t.common.header.admin };
   return (
     <header className="header-scroll sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">

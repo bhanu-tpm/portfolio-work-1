@@ -30,11 +30,11 @@ export const privacy = {
     {
       heading: "AI processing",
       paragraphs: [
-        "Some features use an external AI provider (OpenAI) through our servers. AI is used to help the consultant prepare (for example, summarising your request or drafting an outcome document that the consultant then reviews and edits) and, only if you choose to use them, for the career guidance assistant and resume review.",
+        "Some features use an external AI provider ({provider}) through our servers. AI is used to help the consultant prepare (for example, summarising your request or drafting an outcome document that the consultant then reviews and edits) and, only if you choose to use them, for the career guidance assistant and resume review.",
       ],
       items: [
         "Only the information needed for the specific task is sent. Names, email addresses, phone numbers and links are removed where feasible.",
-        "Requests are sent with provider-side storage disabled. Your data is not used to train AI models under the provider's API terms.",
+        "{providerTerms}",
         "AI output is never treated as a final decision. Every consultation outcome is reviewed and approved by the consultant before you receive it.",
         "You can opt out of AI-assisted preparation when you submit a request, and withdraw AI consent at any time in your dashboard settings.",
       ],
@@ -64,6 +64,19 @@ export const privacy = {
     },
   ] as PrivacySection[],
   contactFallback: "the contact form",
+  /** The AI provider's name and data terms, chosen by AI_PROVIDER and filled into the AI section. */
+  aiProviders: {
+    openai: {
+      name: "OpenAI",
+      terms:
+        "Requests are sent with provider-side storage disabled. Your data is not used to train AI models under the provider's API terms.",
+    },
+    gemini: {
+      name: "Google Gemini",
+      terms:
+        "Requests are sent under Google's free Gemini API terms, which allow Google to use them to improve its products, and they may be reviewed by people at Google. This is why personal details are removed first, and why you can choose not to use AI at all.",
+    },
+  },
 };
 
 export type PrivacyDict = typeof privacy;

@@ -9,6 +9,7 @@ export const common: CommonDict = {
     aiGuidance: "AI मार्गदर्शन",
     contact: "संपर्क",
     privacy: "गोपनीयता",
+    disclaimer: "अस्वीकरण",
   },
   header: {
     signIn: "साइन इन करें",

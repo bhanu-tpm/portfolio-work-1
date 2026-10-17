@@ -4,6 +4,7 @@ import { auth as enAuth } from "./en/auth";
 import { blog as enBlog } from "./en/blog";
 import { common as enCommon } from "./en/common";
 import { contact as enContact } from "./en/contact";
+import { disclaimer as enDisclaimer } from "./en/disclaimer";
 import { home as enHome } from "./en/home";
 import { portfolio as enPortfolio } from "./en/portfolio";
 import { privacy as enPrivacy } from "./en/privacy";
@@ -14,6 +15,7 @@ import { auth as hiAuth } from "./hi/auth";
 import { blog as hiBlog } from "./hi/blog";
 import { common as hiCommon } from "./hi/common";
 import { contact as hiContact } from "./hi/contact";
+import { disclaimer as hiDisclaimer } from "./hi/disclaimer";
 import { home as hiHome } from "./hi/home";
 import { portfolio as hiPortfolio } from "./hi/portfolio";
 import { privacy as hiPrivacy } from "./hi/privacy";
@@ -33,6 +35,7 @@ const en = {
   blog: enBlog,
   contact: enContact,
   privacy: enPrivacy,
+  disclaimer: enDisclaimer,
   assistantPage: enAssistantPage,
   auth: enAuth,
   validation: enValidation,
@@ -47,6 +50,7 @@ const hi: Dictionary = {
   blog: hiBlog,
   contact: hiContact,
   privacy: hiPrivacy,
+  disclaimer: hiDisclaimer,
   assistantPage: hiAssistantPage,
   auth: hiAuth,
   validation: hiValidation,

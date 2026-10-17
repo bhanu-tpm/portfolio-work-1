@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Lets phones on the local network (http://192.168.x.x:3000) load dev scripts. Dev only.
+  allowedDevOrigins: ["192.168.*.*"],
   typescript: {
     // `npm run build` runs `tsc --noEmit` first (see package.json); Next's own
     // CLI-based check is skipped because it stalls on some Windows setups.

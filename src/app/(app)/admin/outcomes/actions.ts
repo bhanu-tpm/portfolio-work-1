@@ -345,7 +345,8 @@ export async function suggestOutcomeResources(_prev: ActionState, formData: Form
           .join("\n")
       : "No client details shared (client did not consent to AI processing).";
     const settings = await getSettings("ai");
-    const webSearch = process.env.AI_WEB_SEARCH === "true";
+    // Web search is an OpenAI tool; Gemini runs without it.
+    const webSearch = process.env.AI_WEB_SEARCH === "true" && env.aiProvider() === "openai";
     const result = await runAiFeature(
       { feature: "resource_suggestions", userId: user.id, requestId: outcome.request_id, outcomeId: outcome.id, dailyLimit: settings.adminDailyLimit },
       (p, m) => suggestResources(p, m, { focus: parsed.data.focus, context, webSearch }),

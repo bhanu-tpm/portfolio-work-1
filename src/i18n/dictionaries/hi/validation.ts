@@ -11,7 +11,7 @@ export const validation: ValidationDict = {
     passwordMin: "कम से कम 10 वर्ण इस्तेमाल करें",
     passwordMax: "अधिकतम 72 वर्ण इस्तेमाल करें",
     passwordMix: "कम से कम एक अक्षर और एक अंक शामिल करें",
-    acceptPrivacy: "कृपया गोपनीयता नीति स्वीकार करें",
+    acceptPrivacy: "कृपया गोपनीयता नीति और अस्वीकरण स्वीकार करें",
     enterPassword: "अपना पासवर्ड दर्ज करें",
     passwordsMismatch: "दोनों पासवर्ड मेल नहीं खाते",
   },

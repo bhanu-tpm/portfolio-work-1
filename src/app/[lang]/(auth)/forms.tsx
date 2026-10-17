@@ -95,6 +95,10 @@ export function SignUpForm() {
             <Link href={href("/privacy")} className="text-teal underline" target="_blank">
               {t.privacyLink}
             </Link>
+            {t.andThe}
+            <Link href={href("/disclaimer")} className="text-teal underline" target="_blank">
+              {t.disclaimerLink}
+            </Link>
             {t.acceptAfter}
           </>
         }

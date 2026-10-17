@@ -3,7 +3,7 @@ import { getSiteProfile } from "@/lib/content";
 import { localizeProfile } from "@/lib/localize";
 import { fmt } from "@/i18n/config";
 import { getI18n } from "@/i18n/server";
-import { PUBLIC_NAV } from "./site-header";
+import { publicNav } from "./site-header";
 
 export async function SiteFooter({ siteName }: { siteName: string }) {
   const { locale, t, href } = await getI18n();
@@ -19,13 +19,16 @@ export async function SiteFooter({ siteName }: { siteName: string }) {
           <p className="mt-2 max-w-xs text-sm text-[oklch(0.95_0.01_80/0.7)]">{profile.headline}</p>
         </div>
         <nav aria-label={t.common.footer.nav} className="grid grid-cols-2 content-start gap-2.5 text-sm">
-          {PUBLIC_NAV.map((item) => (
+          {publicNav().map((item) => (
             <Link key={item.path} href={href(item.path)} className="text-[oklch(0.95_0.01_80/0.75)] hover:text-[oklch(0.95_0.01_80)]">
               {t.common.nav[item.key]}
             </Link>
           ))}
           <Link href={href("/privacy")} className="text-[oklch(0.95_0.01_80/0.75)] hover:text-[oklch(0.95_0.01_80)]">
             {t.common.nav.privacy}
+          </Link>
+          <Link href={href("/disclaimer")} className="text-[oklch(0.95_0.01_80/0.75)] hover:text-[oklch(0.95_0.01_80)]">
+            {t.common.nav.disclaimer}
           </Link>
         </nav>
         <div className="space-y-1.5 text-sm text-[oklch(0.95_0.01_80/0.75)]">

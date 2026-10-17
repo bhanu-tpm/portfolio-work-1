@@ -171,6 +171,21 @@ export function RequestForm({
           }
         />
         <CheckboxField
+          name="acceptDisclaimer"
+          required
+          state={state}
+          label={
+            <>
+              I have read the{" "}
+              <Link href="/disclaimer" target="_blank" className="text-teal underline">
+                disclaimer
+              </Link>{" "}
+              and understand that the guidance is advisory, that no admission, job or other result is guaranteed, and
+              that decisions about my education and career remain mine.
+            </>
+          }
+        />
+        <CheckboxField
           name="consentAi"
           state={state}
           defaultChecked

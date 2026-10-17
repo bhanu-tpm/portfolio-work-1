@@ -15,7 +15,11 @@ import { QuestionCarousel } from "@/components/site/question-carousel";
 import { localizeCategory, localizeProfile } from "@/lib/localize";
 import { fmt, languageAlternates } from "@/i18n/config";
 import { getI18n } from "@/i18n/server";
+import { isAiConfigured } from "@/lib/env";
 import type { Metadata } from "next";
+
+/** The home page features the first services by sort order; the services page lists them all. */
+const HOME_SERVICE_COUNT = 6;
 
 export async function generateMetadata(): Promise<Metadata> {
   const { href } = await getI18n();
@@ -155,7 +159,7 @@ export default async function HomePage() {
             {categories.length ? (
               <div className="reveal mt-12">
                 <ServiceExplorer
-                  categories={categories.map((c) => ({
+                  categories={categories.slice(0, HOME_SERVICE_COUNT).map((c) => ({
                     id: c.id,
                     slug: c.slug,
                     title: c.title,
@@ -275,23 +279,25 @@ export default async function HomePage() {
       </section>
 
       {/* ---------------------------------------------------------- AI assistant */}
-      <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-        <div className="reveal relative overflow-hidden rounded-[2rem] bg-[var(--sage)] p-8 sm:p-12">
-          <div aria-hidden className="blob-c blob-morph absolute -top-16 -right-16 size-56 bg-card/40" />
-          <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
-              <p className="flex items-center gap-2 text-sm font-semibold text-teal">
-                <Sparkles className="size-4" aria-hidden /> {t.assistant.badge}
-              </p>
-              <h2 className="mt-2 text-3xl font-semibold">{t.assistant.title}</h2>
-              <p className="mt-3 text-foreground/75">{t.assistant.body}</p>
+      {isAiConfigured() ? (
+        <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
+          <div className="reveal relative overflow-hidden rounded-[2rem] bg-[var(--sage)] p-8 sm:p-12">
+            <div aria-hidden className="blob-c blob-morph absolute -top-16 -right-16 size-56 bg-card/40" />
+            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-2xl">
+                <p className="flex items-center gap-2 text-sm font-semibold text-teal">
+                  <Sparkles className="size-4" aria-hidden /> {t.assistant.badge}
+                </p>
+                <h2 className="mt-2 text-3xl font-semibold">{t.assistant.title}</h2>
+                <p className="mt-3 text-foreground/75">{t.assistant.body}</p>
+              </div>
+              <Button asChild size="lg" className="btn-lift h-12 shrink-0 rounded-full bg-teal px-6 text-base text-teal-foreground hover:bg-teal/90">
+                <Link href={href("/assistant")}>{t.assistant.cta}</Link>
+              </Button>
             </div>
-            <Button asChild size="lg" className="btn-lift h-12 shrink-0 rounded-full bg-teal px-6 text-base text-teal-foreground hover:bg-teal/90">
-              <Link href={href("/assistant")}>{t.assistant.cta}</Link>
-            </Button>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {/* ------------------------------------------------------------------ Blog */}
       {posts.length ? (

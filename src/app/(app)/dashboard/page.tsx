@@ -4,6 +4,7 @@ import { ArrowRight, Bell, CalendarDays, CheckCircle2, ClipboardList, FileCheck2
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { requireUser } from "@/lib/auth/dal";
+import { isAiConfigured } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
 import { appointmentStatusMeta, formatDateTime, requestStatusMeta } from "@/lib/format";
 import {
@@ -192,19 +193,21 @@ export default async function DashboardPage({ searchParams }: PageProps<"/dashbo
         </Section>
       </div>
 
-      <Link
-        href="/dashboard/assistant"
-        className="flex items-center justify-between gap-4 rounded-xl bg-secondary/60 p-5 text-sm hover:bg-secondary"
-      >
-        <span className="flex items-center gap-3">
-          <Sparkles className="size-5 text-teal" aria-hidden />
-          <span>
-            <strong>Explore options with the AI guidance assistant</strong>
-            <span className="block text-muted-foreground">Optional — exploratory suggestions, not a substitute for your consultation.</span>
+      {isAiConfigured() ? (
+        <Link
+          href="/dashboard/assistant"
+          className="flex items-center justify-between gap-4 rounded-xl bg-secondary/60 p-5 text-sm hover:bg-secondary"
+        >
+          <span className="flex items-center gap-3">
+            <Sparkles className="size-5 text-teal" aria-hidden />
+            <span>
+              <strong>Explore options with the AI guidance assistant</strong>
+              <span className="block text-muted-foreground">Optional — exploratory suggestions, not a substitute for your consultation.</span>
+            </span>
           </span>
-        </span>
-        <ArrowRight className="size-4 shrink-0" aria-hidden />
-      </Link>
+          <ArrowRight className="size-4 shrink-0" aria-hidden />
+        </Link>
+      ) : null}
     </div>
   );
 }
