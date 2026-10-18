@@ -71,6 +71,8 @@
   --accent-foreground: oklch(0.33 0.06 200);
   --teal: oklch(0.5 0.075 195);
   --teal-foreground: oklch(0.99 0 0);
+  /* Sun in the Margith logo. */
+  --brand-sun: #e08a4f;
   --success: oklch(0.5 0.11 155);
   --warning: oklch(0.58 0.13 70);
   --destructive: oklch(0.55 0.2 27);
@@ -110,6 +112,7 @@
   --accent-foreground: oklch(0.93 0.04 190);
   --teal: oklch(0.8 0.11 188);
   --teal-foreground: oklch(0.18 0.03 262);
+  --brand-sun: #f2b98c;
   --success: oklch(0.7 0.12 155);
   --warning: oklch(0.78 0.13 75);
   --destructive: oklch(0.7 0.18 25);

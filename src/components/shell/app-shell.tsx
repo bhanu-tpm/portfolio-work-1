@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LogoMark } from "@/components/brand/logo-mark";
 import { getCurrentUser } from "@/lib/auth/dal";
 import { signOut } from "@/app/[lang]/(auth)/actions";
 import { NavLinks, MobileShellNav, type ShellNavItem } from "./nav-links";
@@ -21,7 +22,8 @@ export function AppShell({
     <div className="flex min-h-svh flex-1">
       <aside className="sticky top-0 hidden h-svh w-64 shrink-0 flex-col border-r bg-sidebar md:flex">
         <div className="flex h-16 items-center gap-2 border-b px-5">
-          <Link href="/" className="font-heading text-lg font-semibold text-primary">
+          <Link href="/" className="flex items-center gap-2 font-heading text-lg font-semibold text-primary">
+            <LogoMark className="h-5" />
             {siteName}
           </Link>
         </div>
@@ -35,7 +37,8 @@ export function AppShell({
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b bg-background/90 px-4 backdrop-blur md:hidden">
-          <Link href="/" className="font-heading font-semibold text-primary">
+          <Link href="/" className="flex items-center gap-2 font-heading font-semibold text-primary">
+            <LogoMark className="h-5" />
             {siteName}
           </Link>
           <MobileShellNav items={nav} area={area}>

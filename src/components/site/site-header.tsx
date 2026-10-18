@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/auth/dal";
 import { getI18n } from "@/i18n/server";
+import { LogoMark } from "@/components/brand/logo-mark";
 import { isAiConfigured } from "@/lib/env";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { LanguageSwitcher } from "./language-switcher";
@@ -29,7 +30,7 @@ export async function SiteHeader({ siteName }: { siteName: string }) {
     <header className="header-scroll sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link href={href("/")} className="flex shrink-0 items-center gap-2 font-heading text-xl font-semibold text-foreground">
-          <span aria-hidden className="blob-a size-5 bg-primary" />
+          <LogoMark className="h-6 text-primary" />
           {siteName}
         </Link>
         <nav aria-label={t.common.header.mainNav} className="hidden items-center gap-1 lg:flex">
