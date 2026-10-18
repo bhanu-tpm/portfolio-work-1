@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontVariables } from "../fonts";
 import "../globals.css";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Career Consultation";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Margith";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),

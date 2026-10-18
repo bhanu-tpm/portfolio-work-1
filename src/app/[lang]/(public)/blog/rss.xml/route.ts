@@ -11,7 +11,7 @@ export async function GET(_request: NextRequest, { params }: RouteContext<"/[lan
   const locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const t = dictionaries[locale].blog.rss;
   const site = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
-  const name = process.env.NEXT_PUBLIC_SITE_NAME || "Career Consultation";
+  const name = process.env.NEXT_PUBLIC_SITE_NAME || "Margith";
   const url = (path: string) => `${site}${localePath(locale, path)}`;
   const posts = (await getPublishedPosts()).map((p) => localizePost(p, locale));
   const items = posts

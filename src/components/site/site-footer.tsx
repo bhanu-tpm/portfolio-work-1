@@ -16,6 +16,7 @@ export async function SiteFooter({ siteName }: { siteName: string }) {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr]">
         <div>
           <p className="font-heading text-2xl font-semibold">{siteName}</p>
+          <p className="mt-1 text-sm font-medium text-[oklch(0.95_0.01_80/0.9)]">{t.common.tagline}</p>
           <p className="mt-2 max-w-xs text-sm text-[oklch(0.95_0.01_80/0.7)]">{profile.headline}</p>
         </div>
         <nav aria-label={t.common.footer.nav} className="grid grid-cols-2 content-start gap-2.5 text-sm">

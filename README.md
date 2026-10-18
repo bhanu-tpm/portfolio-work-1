@@ -1,4 +1,6 @@
-# Career Consultation Platform
+# Margith
+
+*Your Path. Your Potential.*
 
 A personal-brand platform for delivering career and education consultations to students, graduates and
 early-career professionals. It covers the full lifecycle: requirements gathering, review, scheduling, the

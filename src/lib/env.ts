@@ -14,7 +14,7 @@ export type AiProviderName = "openai" | "gemini";
 
 export const env = {
   siteUrl: () => read("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000",
-  siteName: () => read("NEXT_PUBLIC_SITE_NAME") ?? "Career Consultation",
+  siteName: () => read("NEXT_PUBLIC_SITE_NAME") ?? "Margith",
 
   supabaseUrl: () => read("NEXT_PUBLIC_SUPABASE_URL"),
   supabasePublishableKey: () =>

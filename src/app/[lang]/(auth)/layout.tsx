@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getI18n } from "@/i18n/server";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Career Consultation";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Margith";
 
 export default async function AuthLayout({ children }: LayoutProps<"/[lang]">) {
   const { href } = await getI18n();

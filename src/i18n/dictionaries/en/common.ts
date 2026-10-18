@@ -22,13 +22,15 @@ export const common = {
     language: "Language",
     switchTo: "Switch to {language}",
   },
+  /** Brand tagline, shown in the footer and the default page title. */
+  tagline: "Your Path. Your Potential.",
   footer: {
     nav: "Footer",
     sayHello: "Say hello",
     rights: "© {site}. Guidance offered is advisory; decisions remain yours.",
   },
   meta: {
-    title: "{site} — Career and education guidance",
+    title: "{site} — Your Path. Your Potential.",
     description: "Personal career and education consultations for students, graduates and early-career professionals.",
   },
   notFound: {

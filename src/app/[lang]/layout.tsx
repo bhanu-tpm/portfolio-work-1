@@ -9,7 +9,7 @@ import { dictionaries } from "@/i18n/dictionaries";
 import { fontVariables } from "../fonts";
 import "../globals.css";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Career Consultation";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Margith";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ lang: locale }));

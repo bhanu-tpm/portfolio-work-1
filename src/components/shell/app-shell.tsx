@@ -6,7 +6,7 @@ import { getCurrentUser } from "@/lib/auth/dal";
 import { signOut } from "@/app/[lang]/(auth)/actions";
 import { NavLinks, MobileShellNav, type ShellNavItem } from "./nav-links";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Career Consultation";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Margith";
 
 export function AppShell({
   nav,
