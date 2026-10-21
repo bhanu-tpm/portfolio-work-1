@@ -9,7 +9,7 @@ test.describe("public site", () => {
     await expect(page.getByRole("heading", { name: /three friendly steps/i })).toBeVisible();
   });
 
-  for (const path of ["/services", "/portfolio", "/blog", "/contact", "/privacy", "/assistant", "/login", "/signup"]) {
+  for (const path of ["/services", "/about", "/blog", "/contact", "/privacy", "/assistant", "/login", "/signup"]) {
     test(`${path} renders without errors`, async ({ page }) => {
       const errors: string[] = [];
       page.on("pageerror", (e) => errors.push(e.message));
@@ -20,7 +20,7 @@ test.describe("public site", () => {
     });
   }
 
-  for (const path of ["/hi", "/hi/services", "/hi/portfolio", "/hi/blog", "/hi/contact", "/hi/privacy", "/hi/assistant", "/hi/login", "/hi/signup"]) {
+  for (const path of ["/hi", "/hi/services", "/hi/about", "/hi/blog", "/hi/contact", "/hi/privacy", "/hi/assistant", "/hi/login", "/hi/signup"]) {
     test(`${path} renders in Hindi without errors`, async ({ page }) => {
       const errors: string[] = [];
       page.on("pageerror", (e) => errors.push(e.message));

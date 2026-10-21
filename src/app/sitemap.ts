@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
   const posts = await getPublishedPosts();
   const paths = [
-    ...["/", "/services", "/portfolio", "/blog", "/contact", "/assistant", "/privacy", "/disclaimer"]
+    ...["/", "/services", "/about", "/blog", "/contact", "/assistant", "/privacy", "/disclaimer"]
       .filter((path) => path !== "/assistant" || isAiConfigured())
       .map((path) => ({
         path,

@@ -7,7 +7,7 @@ export const disclaimer = {
       "Independent, advisory career guidance: no affiliation with or promotion of any institution, and no guaranteed outcomes.",
   },
   title: "Disclaimer",
-  updated: "Last updated: 17 October 2026",
+  updated: "Last updated: 18 October 2026",
   intro:
     "Please read this disclaimer before booking a consultation or relying on anything on this website. By requesting a consultation, you confirm that you have read and understood it.",
   summaryHeading: "In short",
@@ -25,6 +25,7 @@ export const disclaimer = {
         "This is an independent career guidance service. It is not affiliated with, authorised by, sponsored by or acting on behalf of any university, college, school, coaching institute, examination body, regulator, government department, employer or recruitment agency.",
         "When an institution, course, exam, company or website is mentioned, in a consultation, an outcome document, a blog post or the AI tools, it is for information and comparison only. A mention is not an endorsement, a ranking or a recommendation to enrol, and leaving one out is not a judgement against it.",
         "No payment, commission or referral fee is received from any institution for suggesting it. Suggestions are based only on what appears to suit your goals, situation and preferences.",
+        "The consultant is an alumnus of the Indian Institute of Management Kozhikode (MBA). This describes the consultant's own education only: Margith is an independent service and is not affiliated with, endorsed by or acting on behalf of IIM Kozhikode or any other IIM.",
         "Names, logos and trademarks of institutions belong to their respective owners and are used only to identify them.",
       ],
       items: [],

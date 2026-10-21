@@ -43,6 +43,13 @@ const nextConfig: NextConfig = {
       : [],
   },
   serverExternalPackages: ["pdf-lib", "unpdf"],
+  async redirects() {
+    // The "Portfolio" page became "About"; keep old links working.
+    return [
+      { source: "/portfolio", destination: "/about", permanent: true },
+      { source: "/hi/portfolio", destination: "/hi/about", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

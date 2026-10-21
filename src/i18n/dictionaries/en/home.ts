@@ -1,6 +1,5 @@
 export const home = {
   hero: {
-    greeting: "Hi, I'm {name} · {headline}",
     /** Text before and after the rotating word; words carry any possessive the language needs. */
     headlineBefore: "You don't have to figure out your",
     headlineAfter: "alone.",
@@ -8,7 +7,7 @@ export const home = {
     headlineSr: "You don't have to figure out your future alone.",
     checks: ["One-to-one sessions", "A written action plan", "Online, when it suits you"],
     book: "Book a consultation",
-    portfolio: "Explore my portfolio",
+    portfolio: "About us",
   },
   collage: {
     badge: "Clarity, step by step",
@@ -90,12 +89,10 @@ export const home = {
       { title: "Leave with a plan", body: "A written, personalised action plan with clear next steps you can follow." },
     ],
   },
+  /** Heading, tagline and intro come from the About page text (t.portfolio). */
   about: {
-    eyebrow: "A note from me",
-    title: "Hello, I'm {name}",
-    portraitAlt: "Portrait of {name}",
-    defaultApproach: "Every consultation starts with listening and ends with a practical, written plan that you own.",
-    more: "More about me",
+    approachLine: "Understand. Explore. Plan. Progress.",
+    more: "More about us",
   },
   assistant: {
     badge: "Free · optional",

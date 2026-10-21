@@ -2,7 +2,7 @@ export const common = {
   nav: {
     home: "Home",
     services: "Services",
-    portfolio: "Portfolio",
+    portfolio: "About",
     blog: "Blog",
     aiGuidance: "AI guidance",
     contact: "Contact",
@@ -22,12 +22,28 @@ export const common = {
     language: "Language",
     switchTo: "Switch to {language}",
   },
-  /** Brand tagline, shown in the footer and the default page title. */
-  tagline: "Your Path. Your Potential.",
+  /** Line under the site name in the footer. (The page title uses "Your Path. Your Potential." in meta.title.) */
+  tagline: "Helping You Find Your Direction",
   footer: {
     nav: "Footer",
-    sayHello: "Say hello",
-    rights: "© {site}. Guidance offered is advisory; decisions remain yours.",
+    description: "Career and education guidance for students, graduates, and professionals.",
+    founded: "Founded by an IIM Kozhikode alumnus",
+    explore: "Explore",
+    information: "Information",
+    connect: "Let's Connect",
+    nextStep: "Your next step starts here.",
+    location: "Online consultations across India",
+    book: "Book a Consultation",
+    links: {
+      services: "Services",
+      about: "About Margith",
+      blog: "Insights & Blog",
+      aiGuidance: "AI Guidance",
+      contact: "Contact Us",
+      privacy: "Privacy Policy",
+      disclaimer: "Disclaimer",
+    },
+    rights: "© {year} {site}. All rights reserved.",
   },
   meta: {
     title: "{site} — Your Path. Your Potential.",

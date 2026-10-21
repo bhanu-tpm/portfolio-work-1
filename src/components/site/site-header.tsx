@@ -11,7 +11,7 @@ import { MobileNav } from "./mobile-nav";
 
 export const PUBLIC_NAV: { path: string; key: keyof Dictionary["common"]["nav"] }[] = [
   { path: "/services", key: "services" },
-  { path: "/portfolio", key: "portfolio" },
+  { path: "/about", key: "portfolio" },
   { path: "/blog", key: "blog" },
   { path: "/assistant", key: "aiGuidance" },
   { path: "/contact", key: "contact" },

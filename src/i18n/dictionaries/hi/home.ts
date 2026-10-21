@@ -5,7 +5,6 @@ import type { HomeDict } from "../en/home";
 // Wording follows hindi_website_localization_review.xlsx (Recommended Hindi).
 export const home: HomeDict = {
   hero: {
-    greeting: "नमस्ते, मैं {name} हूँ · {headline}",
     // "आपको <rotating phrase> अकेले तय करने की ज़रूरत नहीं है।"
     headlineBefore: "आपको",
     headlineAfter: "अकेले तय करने की ज़रूरत नहीं है।",
@@ -13,7 +12,7 @@ export const home: HomeDict = {
     headlineSr: "आपको अपने करियर का अगला कदम अकेले तय करने की ज़रूरत नहीं है।",
     checks: ["व्यक्तिगत परामर्श सत्र", "लिखित कार्ययोजना", "आपकी सुविधा के अनुसार ऑनलाइन"],
     book: "परामर्श का समय तय करें",
-    portfolio: "मेरा पोर्टफोलियो देखें",
+    portfolio: "हमारे बारे में",
   },
   collage: {
     badge: "हर कदम पर स्पष्ट मार्गदर्शन",
@@ -123,12 +122,8 @@ export const home: HomeDict = {
     ],
   },
   about: {
-    eyebrow: "मेरी ओर से एक संदेश",
-    title: "नमस्ते, मैं {name} हूँ",
-    portraitAlt: "{name} की तस्वीर",
-    defaultApproach:
-      "हर परामर्श की शुरुआत आपकी बात ध्यान से सुनने से होती है। अंत में आपको एक व्यावहारिक लिखित योजना मिलती है, जो आपकी ज़रूरतों के अनुसार तैयार की जाती है।",
-    more: "मेरे बारे में जानें",
+    approachLine: "समझें। विकल्प तलाशें। योजना बनाएँ। आगे बढ़ें।",
+    more: "हमारे बारे में और जानें",
   },
   assistant: {
     badge: "निःशुल्क · वैकल्पिक",

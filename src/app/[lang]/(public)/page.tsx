@@ -1,11 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, MessageCircleHeart, Sparkles } from "lucide-react";
 import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import { getActiveCategories, getPublishedPosts, getSiteProfile } from "@/lib/content";
-import { shouldOptimize } from "@/lib/images";
-import { initials as initialsOf } from "@/lib/format";
+import { LogoMark } from "@/components/brand/logo-mark";
 import { PostCard } from "@/components/site/post-card";
 import { AudienceShowcase } from "@/components/site/audience-showcase";
 import { HeroCollage } from "@/components/site/hero-collage";
@@ -13,7 +11,7 @@ import { ServiceExplorer } from "@/components/site/service-explorer";
 import { RotatingHeadline } from "@/components/site/rotating-headline";
 import { QuestionCarousel } from "@/components/site/question-carousel";
 import { localizeCategory, localizeProfile } from "@/lib/localize";
-import { fmt, languageAlternates } from "@/i18n/config";
+import { languageAlternates } from "@/i18n/config";
 import { getI18n } from "@/i18n/server";
 import { isAiConfigured } from "@/lib/env";
 import type { Metadata } from "next";
@@ -62,7 +60,6 @@ export default async function HomePage() {
   ]);
   const profile = localizeProfile(rawProfile, locale);
   const categories = rawCategories.map((c) => localizeCategory(c, locale));
-  const initials = initialsOf(profile.full_name);
 
   return (
     <>
@@ -71,21 +68,10 @@ export default async function HomePage() {
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 pt-12 pb-20 sm:px-6 md:pt-16 lg:grid-cols-[1.1fr_1fr] lg:pb-24">
           <div className="rise-in">
             <p className="inline-flex items-center gap-2 rounded-full bg-card py-1 pr-4 pl-1 text-sm shadow-sm ring-1 ring-border">
-              {profile.photo_url ? (
-                <Image
-                  src={profile.photo_url}
-                  alt=""
-                  width={28}
-                  height={28}
-                  unoptimized={!shouldOptimize(profile.photo_url)}
-                  className="size-7 rounded-full object-cover"
-                />
-              ) : (
-                <span className="flex size-7 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-                  {initials}
-                </span>
-              )}
-              {fmt(t.hero.greeting, { name: profile.full_name, headline: profile.headline })}
+              <span className="flex size-7 items-center justify-center rounded-full bg-[var(--ink)] text-[oklch(0.97_0.01_80)]">
+                <LogoMark className="h-3.5" />
+              </span>
+              {dict.common.footer.founded}
             </p>
             <RotatingHeadline />
             <p className="mt-7 max-w-xl text-lg text-muted-foreground">{profile.short_bio}</p>
@@ -96,7 +82,7 @@ export default async function HomePage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="ghost" className="h-12 rounded-full px-5 text-base hover:bg-[var(--sand)]">
-                <Link href={href("/portfolio")}>{t.hero.portfolio}</Link>
+                <Link href={href("/about")}>{t.hero.portfolio}</Link>
               </Button>
             </div>
             <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
@@ -225,42 +211,22 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- About */}
       <section aria-labelledby="about-heading" className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="reveal grid items-center gap-12 md:grid-cols-[0.9fr_1.1fr]">
-          <div className={cn("relative mx-auto w-full", profile.photo_url ? "max-w-sm" : "max-w-[16rem]")}>
+          <div className="relative mx-auto w-full max-w-[16rem]">
             <div aria-hidden className="blob-b blob-morph absolute -inset-4 bg-[var(--peach)]" />
-            {profile.photo_url ? (
-              <div className="blob-a relative aspect-[4/5] overflow-hidden ring-4 ring-card">
-                <Image
-                  src={profile.photo_url}
-                  alt={fmt(t.about.portraitAlt, { name: profile.full_name })}
-                  fill
-                  sizes="(min-width: 768px) 24rem, 90vw"
-                  unoptimized={!shouldOptimize(profile.photo_url)}
-                  className="object-cover"
-                />
-              </div>
-            ) : (
-              <div
-                aria-hidden
-                className="blob-a relative flex aspect-[4/5] items-center justify-center bg-card font-heading text-7xl font-semibold text-primary ring-4 ring-card"
-              >
-                {initials}
-              </div>
-            )}
+            <div aria-hidden className="blob-a relative flex aspect-[4/5] items-center justify-center bg-card text-primary ring-4 ring-card">
+              <LogoMark className="h-24" />
+            </div>
           </div>
           <div>
             <Eyebrow>
-              <MessageCircleHeart className="size-4" aria-hidden /> {t.about.eyebrow}
+              <MessageCircleHeart className="size-4" aria-hidden /> {dict.portfolio.title}
             </Eyebrow>
             <h2 id="about-heading" className="mt-4 text-3xl font-semibold sm:text-5xl">
-              {fmt(t.about.title, { name: profile.full_name })}
+              {dict.portfolio.tagline}
             </h2>
-            <p className="mt-5 text-lg leading-relaxed whitespace-pre-line text-muted-foreground">
-              {profile.long_bio || profile.short_bio}
-            </p>
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{dict.portfolio.intro[0]}</p>
             <blockquote className="mt-6 rounded-2xl bg-[var(--sand)] p-5 font-heading text-lg text-foreground/90 italic">
-              “
-              {profile.approach || t.about.defaultApproach}
-              ”
+              “{t.about.approachLine}”
             </blockquote>
             {profile.credibility_points.length ? (
               <ul className="mt-6 flex flex-wrap gap-2">
@@ -271,7 +237,7 @@ export default async function HomePage() {
                 ))}
               </ul>
             ) : null}
-            <Link href={href("/portfolio")} className="mt-6 inline-flex items-center gap-1 font-medium text-primary hover:underline">
+            <Link href={href("/about")} className="mt-6 inline-flex items-center gap-1 font-medium text-primary hover:underline">
               {t.about.more} <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
